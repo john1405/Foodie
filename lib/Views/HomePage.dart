@@ -1,6 +1,9 @@
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:foodie/Helpers/Footer.dart';
 import 'package:foodie/Helpers/Headers.dart';
 import 'package:foodie/Helpers/Middle.dart';
+import 'package:foodie/Views/DetailedScreen.dart';
 
 class Homescreen extends StatefulWidget {
   @override
@@ -11,6 +14,7 @@ class _HomescreenState extends State<Homescreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: Footers().floatingActionButton(context),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
@@ -25,6 +29,9 @@ class _HomescreenState extends State<Homescreen> {
               Divider(),
               MiddleHelpers().textFav(),
               MiddleHelpers().dataFav(context, 'favourite'),
+              MiddleHelpers().texttoBusiness(),
+              MiddleHelpers().dataBusiness(context, 'business'),
+              Footers().floatingActionButton(context),
             ],
           ),
         ),

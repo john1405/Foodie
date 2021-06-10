@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:foodie/Helpers/Footer.dart';
 import 'package:foodie/Helpers/Headers.dart';
 import 'package:foodie/Helpers/Middle.dart';
 import 'package:foodie/Services/ManageData.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider.value(value: Headers()),
           ChangeNotifierProvider.value(value: MiddleHelpers()),
           ChangeNotifierProvider.value(value: ManageData()),
+          ChangeNotifierProvider.value(value: Footers()),
         ],
         child: MaterialApp(
           title: 'Foodie',

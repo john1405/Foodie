@@ -79,7 +79,7 @@ class _MyCartState extends State<MyCart> {
 
   Widget cartData() {
     return SizedBox(
-      height: 300.0,
+      height: 240.0,
     );
   }
 
@@ -88,7 +88,7 @@ class _MyCartState extends State<MyCart> {
       decoration: BoxDecoration(boxShadow: [
         BoxShadow(color: Colors.grey.shade500, blurRadius: 5, spreadRadius: 3),
       ], borderRadius: BorderRadius.circular(40.0), color: Colors.white),
-      height: 130.0,
+      height: 120.0,
       width: 400.0,
       child: Padding(
         padding: const EdgeInsets.only(top: 20.0),
@@ -150,7 +150,7 @@ class _MyCartState extends State<MyCart> {
           BoxShadow(
               color: Colors.grey.shade500, blurRadius: 5, spreadRadius: 3),
         ], borderRadius: BorderRadius.circular(40.0), color: Colors.white),
-        height: 120.0,
+        height: 110.0,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
