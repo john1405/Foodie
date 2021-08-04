@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:foodie/Helpers/Footer.dart';
 import 'package:foodie/Helpers/Headers.dart';
 import 'package:foodie/Helpers/Middle.dart';
+import 'package:foodie/Services/maps.dart';
 import 'package:foodie/Views/DetailedScreen.dart';
+import 'package:provider/provider.dart';
 
 class Homescreen extends StatefulWidget {
   @override
@@ -11,6 +13,12 @@ class Homescreen extends StatefulWidget {
 }
 
 class _HomescreenState extends State<Homescreen> {
+  @override
+  void initState() {
+    Provider.of<GenerateMaps>(context, listen: false).getCurrentLocation();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

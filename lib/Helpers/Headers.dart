@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:foodie/Services/maps.dart';
 
 class Headers extends ChangeNotifier {
   Widget appBar(BuildContext context) {
@@ -12,13 +13,22 @@ class Headers extends ChangeNotifier {
           IconButton(onPressed: () {}, icon: Icon(FontAwesomeIcons.userAlt)),
           Row(
             children: [
-              Icon(FontAwesomeIcons.locationArrow),
-              Text(
-                'Local Area',
-                style: TextStyle(
-                    color: Colors.grey.shade600,
-                    fontSize: 12.0,
-                    fontWeight: FontWeight.w300),
+              Icon(
+                FontAwesomeIcons.locationArrow,
+                size: 20.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0, left: 8.0),
+                child: Container(
+                  constraints: BoxConstraints(maxWidth: 250.0),
+                  child: Text(
+                    finalAddress,
+                    style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w300),
+                  ),
+                ),
               ),
             ],
           ),
