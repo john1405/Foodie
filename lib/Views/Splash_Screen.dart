@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:foodie/Views/HomePage.dart';
+import 'package:foodie/Views/Login.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -19,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
         () => Navigator.pushReplacement(
             context,
             PageTransition(
-                child: Homescreen(), type: PageTransitionType.leftToRight)));
+                child: Login(), type: PageTransitionType.leftToRight)));
     super.initState();
   }
 
