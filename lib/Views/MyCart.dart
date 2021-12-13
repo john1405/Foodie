@@ -1,8 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:foodie/MiniViews/Maps.dart';
+import 'package:foodie/Services/maps.dart';
 import 'package:foodie/Views/HomePage.dart';
+import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
 class MyCart extends StatefulWidget {
   @override
@@ -79,7 +84,30 @@ class _MyCartState extends State<MyCart> {
 
   Widget cartData() {
     return SizedBox(
-      height: 240.0,
+      height: 100.0,
+      // child: StreamBuilder<QuerySnapshot>(
+      //   stream: FirebaseFirestore.instance.collection("myOrders").snapshots(),
+      //   builder: (context, snapshot) {
+      //     if (snapshot.connectionState == ConnectionState.waiting) {
+      //       return Center(child: Lottie.asset('Animation/delivery.json'));
+      //     } else {
+      //       return !snapshot.hasData
+      //     ? Center(child: CircularProgressIndicator())
+      //     : ListView.builder(
+      //         itemCount: snapshot.data.docs.length,
+      //         itemBuilder: (context, index) {
+      //           DocumentSnapshot data = snapshot.data[index];
+      //           Map getDocs = data.data;
+      //           return new Container(
+      //             height: 200,
+      //             width: 400,
+      //             child: Image.network(documentSnapshot.data()['image']),
+      //           );
+
+      //       });
+      //     }
+      //   },
+      // ),
     );
   }
 
@@ -105,13 +133,21 @@ class _MyCartState extends State<MyCart> {
                       padding: const EdgeInsets.only(left: 8.0),
                       child: Container(
                           constraints: BoxConstraints(maxWidth: 250.0),
-                          child: Text('<mock address from headers>')),
+                          child: Text(
+                              Provider.of<GenerateMaps>(context, listen: true)
+                                  .getGetmainAddress)),
                     )
                   ],
                 ),
                 IconButton(
                   icon: Icon(Icons.edit),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                        context,
+                        PageTransition(
+                            child: Maps(),
+                            type: PageTransitionType.bottomToTop));
+                  },
                 )
               ],
             ),
