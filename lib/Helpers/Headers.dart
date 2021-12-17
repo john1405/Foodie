@@ -2,6 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:foodie/Services/maps.dart';
+import 'package:foodie/Views/HomePage.dart';
+import 'package:foodie/Views/Login.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Headers extends ChangeNotifier {
   Widget appBar(BuildContext context) {
@@ -10,7 +14,18 @@ class Headers extends ChangeNotifier {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          IconButton(onPressed: () {}, icon: Icon(FontAwesomeIcons.userAlt)),
+          IconButton(
+              onPressed: () async {
+                SharedPreferences sharedPreferences =
+                    await SharedPreferences.getInstance();
+
+                sharedPreferences.remove('uid');
+                Navigator.pushReplacement(
+                    context,
+                    PageTransition(
+                        child: Login(), type: PageTransitionType.leftToRight));
+              },
+              icon: Icon(FontAwesomeIcons.userAlt)),
           Row(
             children: [
               Icon(

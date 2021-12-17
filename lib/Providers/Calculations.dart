@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foodie/Services/ManageData.dart';
@@ -5,7 +6,7 @@ import 'package:provider/provider.dart';
 
 class Calculations with ChangeNotifier {
   int cheesevalue = 0, baconvalue = 0, onionvalue = 0, cartData = 0;
-  late String size;
+  String size = "";
   // Calculations(this.size);
   String get getSize => size;
 
@@ -83,6 +84,7 @@ class Calculations with ChangeNotifier {
       cartData++;
       await Provider.of<ManageData>(context, listen: false)
           .submitData(context, data);
+
       notifyListeners();
     } else {
       return showModalBottomSheet(

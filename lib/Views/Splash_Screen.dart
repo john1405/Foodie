@@ -5,6 +5,9 @@ import 'package:foodie/Views/HomePage.dart';
 import 'package:foodie/Views/Login.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+String userUid = "";
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -12,15 +15,25 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  Future getUid() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    userUid = sharedPreferences.getString('uid')!;
+    print("The used id of this = > ");
+    print(userUid);
+  }
+
   @override
   void initState() {
     // TODO: implement initState
-    Timer(
-        Duration(seconds: 5),
-        () => Navigator.pushReplacement(
-            context,
-            PageTransition(
-                child: Login(), type: PageTransitionType.leftToRight)));
+    getUid().whenComplete(() {
+      Timer(
+          Duration(seconds: 5),
+          () => Navigator.pushReplacement(
+              context,
+              PageTransition(
+                  child: userUid == null ? Login() : Homescreen(),
+                  type: PageTransitionType.leftToRight)));
+    });
     super.initState();
   }
 

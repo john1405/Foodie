@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:foodie/Providers/Authentication.dart';
+import 'package:foodie/Views/Splash_Screen.dart';
 import 'package:provider/provider.dart';
 
 class ManageData extends ChangeNotifier {
@@ -18,5 +19,14 @@ class ManageData extends ChangeNotifier {
         .collection('myOrders')
         .doc(Provider.of<Authentication>(context, listen: false).getUid)
         .set(data);
+  }
+
+  Future deleteData(BuildContext context) {
+    return FirebaseFirestore.instance
+        .collection('myOrders')
+        .doc(Provider.of<Authentication>(context, listen: false).getUid == null
+            ? userUid
+            : Provider.of<Authentication>(context, listen: false).getUid)
+        .delete();
   }
 }

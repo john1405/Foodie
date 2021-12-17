@@ -3,8 +3,11 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:foodie/MiniViews/Maps.dart';
+import 'package:foodie/Providers/Authentication.dart';
+import 'package:foodie/Services/ManageData.dart';
 import 'package:foodie/Services/maps.dart';
 import 'package:foodie/Views/HomePage.dart';
+import 'package:foodie/Views/Splash_Screen.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
@@ -55,11 +58,8 @@ class _MyCartState extends State<MyCart> {
           child: IconButton(
               icon: Icon(FontAwesomeIcons.trash, color: Colors.amberAccent),
               onPressed: () {
-                Navigator.pushReplacement(
-                    context,
-                    PageTransition(
-                        child: Homescreen(),
-                        type: PageTransitionType.rightToLeftWithFade));
+                Provider.of<ManageData>(context, listen: false)
+                    .deleteData(context);
               }),
         )
       ]),
@@ -271,7 +271,12 @@ class _MyCartState extends State<MyCart> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Provider.of<Authentication>(context, listen: false).getUid == null
+                ? print(userUid)
+                : print(
+                    Provider.of<Authentication>(context, listen: false).getUid);
+          },
           child: Container(
             width: 250.0,
             height: 50.0,

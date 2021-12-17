@@ -14,6 +14,16 @@ class Maps extends StatelessWidget {
         children: [
           Provider.of<GenerateMaps>(context, listen: false).fetchMaps(),
           Positioned(
+            top: 700,
+            left: 50,
+            child: Container(
+                color: Colors.white,
+                height: 70,
+                width: 300,
+                child: Text(Provider.of<GenerateMaps>(context, listen: true)
+                    .getGetmainAddress)),
+          ),
+          Positioned(
               top: 50.0,
               child: IconButton(
                 icon: Icon(

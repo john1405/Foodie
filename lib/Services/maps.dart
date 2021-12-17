@@ -54,7 +54,9 @@ class GenerateMaps extends ChangeNotifier {
           mainAddress = address.first.addressLine;
           notifyListeners();
 
-          getMarkers(loc.latitude, loc.longitude);
+          markers == null
+              ? getMarkers(loc.latitude, loc.longitude)
+              : markers.clear();
 
           print(loc);
           print(countryName);
