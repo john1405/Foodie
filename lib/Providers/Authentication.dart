@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Authentication with ChangeNotifier {
-  String uid = "";
+  late String uid, useremail;
   // Authentication(@required this.uid);
   String get getUid => uid;
+  String get getuseremail => useremail;
 
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
@@ -15,6 +16,7 @@ class Authentication with ChangeNotifier {
         .signInWithEmailAndPassword(email: email, password: password);
     User user = userCredential.user!;
     uid = user.uid;
+    useremail = user.email!;
 
     print('this is out uid => $uid');
     notifyListeners();

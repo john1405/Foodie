@@ -13,8 +13,8 @@ class GenerateMaps extends ChangeNotifier {
   late GoogleMapController googleMapController;
   Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
   String countryName = "nothing", mainAddress = "nothing";
-  String get getGetcountryName => countryName;
-  String get getGetmainAddress => countryName;
+  String get getcountryName => countryName;
+  String get getmainAddress => countryName;
 
   Future getCurrentLocation() async {
     var postionedData = await GeolocatorPlatform.instance.getCurrentPosition();
@@ -34,8 +34,7 @@ class GenerateMaps extends ChangeNotifier {
       markerId: markerId,
       icon: BitmapDescriptor.defaultMarker,
       position: LatLng(lat, alt),
-      infoWindow:
-          InfoWindow(title: getGetmainAddress, snippet: getGetcountryName),
+      infoWindow: InfoWindow(title: getmainAddress, snippet: getcountryName),
     );
     markers[markerId] = marker;
   }

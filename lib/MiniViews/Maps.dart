@@ -21,7 +21,7 @@ class Maps extends StatelessWidget {
                 height: 70,
                 width: 300,
                 child: Text(Provider.of<GenerateMaps>(context, listen: true)
-                    .getGetmainAddress)),
+                    .getmainAddress)),
           ),
           Positioned(
               top: 50.0,

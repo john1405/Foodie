@@ -5,9 +5,9 @@ import 'package:foodie/Helpers/Headers.dart';
 import 'package:foodie/Helpers/Middle.dart';
 import 'package:foodie/Providers/Authentication.dart';
 import 'package:foodie/Providers/Calculations.dart';
+import 'package:foodie/Providers/payment.dart';
 import 'package:foodie/Services/ManageData.dart';
 import 'package:foodie/Services/maps.dart';
-import 'package:foodie/Views/DetailedScreen.dart';
 import 'package:foodie/Views/Splash_Screen.dart';
 import 'package:provider/provider.dart';
 
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          // ChangeNotifierProvider.value(value: DetailedScreen()),
+          ChangeNotifierProvider.value(value: PaymentHelper()),
           ChangeNotifierProvider.value(value: Calculations()),
           ChangeNotifierProvider.value(value: Authentication()),
           ChangeNotifierProvider.value(value: Headers()),
