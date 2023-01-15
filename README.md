@@ -19,3 +19,27 @@ Development Setup
 Clone the repository and run the following commands:
 flutter pub get
 flutter run
+
+Screens it contains:
+
+=> Onboarding
+
+=> Login
+
+=> Forgot Password
+
+=> Sign Up
+
+=> Complete Profile
+
+=> OTP Verification
+
+=> Home Page
+
+=> Product Details
+
+=> Order
+
+=> Profile
+
+=> Bottom Navigation Bar
